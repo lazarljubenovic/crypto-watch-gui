@@ -1,0 +1,61 @@
+* {
+  font-family: Roboto, sans-serif;
+}
+
+pre, code {
+  font-family: monospace;
+}
+
+:host,
+app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+main {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  height: 100%;
+  background-color: rgba(black, .033);
+}
+
+md-card {
+  margin: 3em 1em;
+  margin-right: 0;
+  display: flex!important;
+  flex-direction: column;
+
+  &:last-child {
+    margin-right: 1em;;
+  }
+}
+
+md-card-content {
+  margin-top: 2em;
+  height: 100%;
+
+  > div {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+.vertical-group {
+  display: flex;
+  flex-direction: column;
+
+  > * {
+    width: 100%;
+    margin-bottom: 1ex;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

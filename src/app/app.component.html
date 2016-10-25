@@ -1,3 +1,69 @@
-<h1>
-  {{title}}
-</h1>
+<md-toolbar color="primary">
+  Crypto Watch
+</md-toolbar>
+
+<main>
+  <md-card>
+    <md-card-title>Basic</md-card-title>
+    <md-card-subtitle>
+      Use the options below to change basic program functionality.
+    </md-card-subtitle>
+
+    <md-card-content>
+      <div>
+        <md-checkbox [formControl]="watch">
+          Watch files
+        </md-checkbox>
+
+        <div class="vertical-group">
+          <md-input [formControl]="sourcePath">
+            <md-placeholder>Source path</md-placeholder>
+          </md-input>
+
+          <md-input [formControl]="destinationPath">
+            <md-placeholder>Destination path</md-placeholder>
+          </md-input>
+        </div>
+
+        <button md-raised-button
+                color="primary"
+                (click)="convert.next(true)"
+                [disabled]="watch.value">Convert</button>
+      </div>
+    </md-card-content>
+  </md-card>
+
+  <md-card>
+    <md-card-title>Algorithm</md-card-title>
+    <md-card-subtitle>
+      Use options below to change behaviour of the
+      <strong>Election 1876 Cipher</strong>.
+    </md-card-subtitle>
+    <md-card-content>
+      <div>
+        <md-radio-group [formControl]="isEncryption">
+          <div class="vertical-group">
+            <md-radio-button [value]="true">Encryption</md-radio-button>
+            <md-radio-button [value]="false">Decryption</md-radio-button>
+          </div>
+        </md-radio-group>
+
+        <md-radio-group [formControl]="isOptionsFromFile">
+          <div class="vertical-group">
+            <md-radio-button [value]="true">
+              Read from <code>crypto.json</code> file
+            </md-radio-button>
+            <md-radio-button [value]="false">
+              Use the following permutation
+            </md-radio-button>
+          </div>
+        </md-radio-group>
+
+        <md-input [formControl]="permutation"
+                  [disabled]="isOptionsFromFile.value">
+          <md-placeholder>Permutation</md-placeholder>
+        </md-input>
+      </div>
+    </md-card-content>
+  </md-card>
+</main>
