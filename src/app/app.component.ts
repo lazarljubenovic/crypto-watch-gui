@@ -18,8 +18,8 @@ import 'rxjs/add/observable/combineLatest';
 export class AppComponent implements OnInit, OnDestroy {
 
   public watch: FormControl = new FormControl(false);
-  public sourcePath: FormControl = new FormControl('./input');
-  public destinationPath: FormControl = new FormControl('./output');
+  public sourcePath: FormControl = new FormControl('input');
+  public destinationPath: FormControl = new FormControl('output');
   public isEncryption: FormControl = new FormControl(true);
   public isOptionsFromFile: FormControl = new FormControl(true);
   public permutation: FormControl = new FormControl("1 0");
@@ -50,10 +50,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.socket = new WebSocket('ws://localhost:4201');
 
-    this.socket.onopen = event => {
-      this.socket.send(JSON.stringify(`Client connected!`));
-    }
-
     this.changes$ = Observable.combineLatest(
       this.watch.valueChanges.startWith(this.watch.value),
       this.sourcePath.valueChanges.startWith(this.sourcePath.value),
@@ -71,7 +67,7 @@ export class AppComponent implements OnInit, OnDestroy {
           destinationPath: values[2],
           isEncryption: values[3],
           isOptionsFromFile: values[4],
-          permutation: values[5],
+          permutationFromGui: values[5],
         }
       });
 
